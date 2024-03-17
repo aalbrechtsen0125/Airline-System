@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class PaymentForFlight {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter card number: ");
+        String cardNumber = scanner.nextLine();
+
+        System.out.print("Enter expiration date (MMYY): ");
+        String expirationDate = scanner.nextLine();
+
+        System.out.print("Enter CVC: ");
+        String cvc = scanner.nextLine();
+
+        String result = processPayment(cardNumber, expirationDate, cvc);
+        System.out.println(result);
+    }
+
+    public static String processPayment(String cardNumber, String expirationDate, String cvc) {
+        // Validate card number
+        if (cardNumber.length() != 16 || !cardNumber.matches("\\d+")) {
+            return "Invalid card number";
+        }
+
+        // Validate expiration date
+        if (expirationDate.length() != 4 || !expirationDate.matches("\\d+")) {
+            return "Invalid expiration date";
+        }
+
+        // Validate cvc
+        if (cvc.length() != 3 || !cvc.matches("\\d+")) {
+            return "Invalid CVC";
+        }
+
+        // Process payment logic goes here
+        // ...
+
+        return "Payment processed successfully";
+    }
+}
