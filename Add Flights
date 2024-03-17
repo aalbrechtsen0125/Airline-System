@@ -1,0 +1,56 @@
+class AirlineFlights {
+    private List<Flight> flights;
+
+    public AirlineFlights() {
+        flights = new ArrayList<>();
+    }
+
+    public void addFlight(String date, String arrivalTime, String departureTime, int firstClassCapacity, int businessClassCapacity, int economyClassCapacity) {
+        Flight flight = new Flight(date, arrivalTime, departureTime, firstClassCapacity, businessClassCapacity, economyClassCapacity);
+        flights.add(flight);
+    }
+
+    // Other methods for managing flights can be added here
+
+    private class Flight {
+        private String date;
+        private String arrivalTime;
+        private String departureTime;
+        private int firstClassCapacity;
+        private int businessClassCapacity;
+        private int economyClassCapacity;
+
+        public Flight(String date, String arrivalTime, String departureTime, int firstClassCapacity, int businessClassCapacity, int economyClassCapacity) {
+            this.date = date;
+            this.arrivalTime = arrivalTime;
+            this.departureTime = departureTime;
+            this.firstClassCapacity = firstClassCapacity;
+            this.businessClassCapacity = businessClassCapacity;
+            this.economyClassCapacity = economyClassCapacity;
+        }
+
+        // Getters and setters for flight details can be added here
+    }
+      public static void main(String[] args) {
+        AirlineFlights AirlineFlights = new AirlineFlights();
+        
+        // Add flights using the addFlight method
+        AirlineFlights.addFlight("2024-01-01", "10:00", "12:00", 50, 100, 200);
+        AirlineFlights.addFlight("2024-01-02", "14:00", "16:00", 30, 80, 150);
+        
+        // Print flight information
+        for (Flight flight : AirlineFlights.flights) {
+            System.out.println("Flight details:");
+            System.out.println("Date: " + flight.date);
+            System.out.println("Arrival time: " + flight.arrivalTime);
+            System.out.println("Departure time: " + flight.departureTime);
+            System.out.println("First class capacity: " + flight.firstClassCapacity);
+            System.out.println("Business class capacity: " + flight.businessClassCapacity);
+            System.out.println("Economy class capacity: " + flight.economyClassCapacity);
+            System.out.println();
+        }
+        
+        // Example: Print the number of flights
+        System.out.println("Number of flights: " + AirlineFlights.flights.size());
+    }
+}
