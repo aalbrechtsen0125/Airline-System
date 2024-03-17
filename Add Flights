@@ -29,7 +29,6 @@ class AirlineFlights {
             this.economyClassCapacity = economyClassCapacity;
         }
 
-        // Getters and setters for flight details can be added here
     }
       public static void main(String[] args) {
         AirlineFlights AirlineFlights = new AirlineFlights();
