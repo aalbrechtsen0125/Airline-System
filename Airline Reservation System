@@ -1,0 +1,130 @@
+class Flight:
+    def __init__(self, flight_number, source, destination, departure_time, arrival_time):
+        self.flight_number = flight_number
+        self.source = source
+        self.destination = destination
+        self.departure_time = departure_time
+        self.arrival_time = arrival_time
+
+class Reservation:
+    def __init__(self, flight, passenger_name, seat_number):
+        self.flight = flight
+        self.passenger_name = passenger_name
+        self.seat_number = seat_number
+
+class AirlineReservationSystem:
+    def __init__(self):
+        self.flights = []
+        self.reservations = []
+
+    def add_flight(self, flight):
+        self.flights.append(flight)
+
+    def make_reservation(self, flight_number, passenger_name, seat_number):
+        flight = self.find_flight(flight_number)
+        if flight is None:
+            print("Flight not found.")
+            return
+
+        reservation = Reservation(flight, passenger_name, seat_number)
+        self.reservations.append(reservation)
+        print("Reservation successfully made.")
+
+    def find_flight(self, flight_number):
+        for flight in self.flights:
+            if flight.flight_number == flight_number:
+                return flight
+        return None
+
+# Usage example
+airline_system = AirlineReservationSystem()
+
+# Add flights
+flight1 = Flight("ABC123", "New York", "Los Angeles", "10:00 AM", "1:00 PM")
+flight2 = Flight("DEF456", "Chicago", "San Francisco", "2:00 PM", "5:00 PM")
+airline_system.add_flight(flight1)
+airline_system.add_flight(flight2)
+
+# Make a reservation
+airline_system.make_reservation("ABC123", "John Doe", "A1")
+class Seat:
+    def __init__(self, seat_number, seat_class):
+        self.seat_number = seat_number
+        self.seat_class = seat_class
+
+class Flight:
+    def __init__(self, flight_number, source, destination, departure_time, arrival_time):
+        self.flight_number = flight_number
+        self.source = source
+        self.destination = destination
+        self.departure_time = departure_time
+        self.arrival_time = arrival_time
+        self.seats = []
+
+    def add_seat(self, seat):
+        self.seats.append(seat)
+
+class Reservation:
+    def __init__(self, flight, passenger_name, seat_number):
+        self.flight = flight
+        self.passenger_name = passenger_name
+        self.seat_number = seat_number
+
+class AirlineReservationSystem:
+    def __init__(self):
+        self.flights = []
+        self.reservations = []
+
+    def add_flight(self, flight):
+        self.flights.append(flight)
+
+    def make_reservation(self, flight_number, passenger_name, seat_number, seat_class):
+        flight = self.find_flight(flight_number)
+        if flight is None:
+            print("Flight not found.")
+            return
+
+        seat = self.find_seat(flight, seat_number)
+        if seat is None:
+            print("Seat not found.")
+            return
+
+        if seat.seat_class != seat_class:
+            print("Seat class does not match.")
+            return
+
+        reservation = Reservation(flight, passenger_name, seat_number)
+        self.reservations.append(reservation)
+        print("Reservation successfully made.")
+
+    def find_flight(self, flight_number):
+        for flight in self.flights:
+            if flight.flight_number == flight_number:
+                return flight
+        return None
+
+    def find_seat(self, flight, seat_number):
+        for seat in flight.seats:
+            if seat.seat_number == seat_number:
+                return seat
+        return None
+
+# Usage example
+airline_system = AirlineReservationSystem()
+
+# Add flights
+flight1 = Flight("ABC123", "New York", "Los Angeles", "10:00 AM", "1:00 PM")
+flight2 = Flight("DEF456", "Chicago", "San Francisco", "2:00 PM", "5:00 PM")
+airline_system.add_flight(flight1)
+airline_system.add_flight(flight2)
+
+# Add seats to flights
+seat1 = Seat("A1", "First Class")
+seat2 = Seat("B1", "Business")
+seat3 = Seat("C1", "Economy")
+flight1.add_seat(seat1)
+flight1.add_seat(seat2)
+flight1.add_seat(seat3)
+
+# Make a reservation
+airline_system.make_reservation("ABC123", "John Doe", "A1", "First Class")
