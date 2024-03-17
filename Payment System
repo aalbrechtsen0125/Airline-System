@@ -33,8 +33,7 @@ public class PaymentForFlight {
             return "Invalid CVC";
         }
 
-        // Process payment logic goes here
-        // ...
+        
 
         return "Payment processed successfully";
     }
